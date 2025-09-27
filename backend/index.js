@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const app=express();
 const path = require('path');
 
 // Import routes
@@ -9,7 +10,6 @@ const authRoutes = require('./src/routes/auth');
 const profileRoutes = require('./src/routes/profile');
 const ticketRoutes = require('./src/routes/ticket');
 const screenshotRoutes = require('./src/routes/screenshot');
-const app = express();
 
 // CORS configuration
 const corsOptions = {
@@ -129,13 +129,5 @@ process.on('unhandledRejection', (err) => {
   }
 });
 
-// Handle uncaught exceptions
-process.on('uncaughtException', (err) => {
-  console.error('Uncaught Exception:', err);
-  // Don't exit the process in development
-  if (process.env.NODE_ENV === 'production') {
-    process.exit(1);
-  }
-});
-
+// Export the Express app for Vercel serverless runtime
 module.exports = app;
