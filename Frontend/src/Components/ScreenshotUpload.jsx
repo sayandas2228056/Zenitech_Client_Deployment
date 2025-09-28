@@ -158,7 +158,7 @@ const ScreenshotUpload = ({ onClose }) => {
                 <img 
                   src={preview} 
                   alt="Screenshot preview" 
-                  className="max-h-64 mx-auto"
+                  className="w-full h-auto max-h-80 object-contain mx-auto"
                 />
               </div>
             </div>

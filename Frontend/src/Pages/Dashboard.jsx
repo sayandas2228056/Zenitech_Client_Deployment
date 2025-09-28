@@ -218,16 +218,16 @@ const Dashboard = () => {
 
       {/* Header */}
       <div className="bg-white/70 backdrop-blur-md border-b border-orange-200/50 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-6">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-            <div className="space-y-2">
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-amber-700 via-orange-600 to-red-600 bg-clip-text text-transparent">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 sm:gap-6">
+            <div className="space-y-1.5 sm:space-y-2">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-amber-700 via-orange-600 to-red-600 bg-clip-text text-transparent leading-tight">
                 Support Dashboard
               </h1>
-              <p className="text-amber-700/80 font-medium">Manage and track your support tickets seamlessly</p>
+              <p className="text-amber-700/80 font-medium text-sm sm:text-base">Manage and track your support tickets seamlessly</p>
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               {/* Search Bar */}
               <div className="relative group">
                 <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-amber-600/60 w-5 h-5 transition-colors group-focus-within:text-orange-600" />
@@ -236,7 +236,7 @@ const Dashboard = () => {
                   placeholder="Search tickets, names, tokens..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-12 pr-4 py-3.5 border border-orange-200 rounded-2xl focus:ring-2 focus:ring-orange-400/50 focus:border-orange-400 outline-none transition-all duration-300 w-full sm:w-72 bg-white/90 backdrop-blur-sm text-gray-900 placeholder-amber-600/60"
+                  className="pl-12 pr-4 py-3 border border-orange-200 rounded-2xl focus:ring-2 focus:ring-orange-400/50 focus:border-orange-400 outline-none transition-all duration-300 w-full sm:w-72 bg-white/90 backdrop-blur-sm text-gray-900 placeholder-amber-600/60"
                 />
               </div>
               
@@ -246,7 +246,7 @@ const Dashboard = () => {
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
-                  className="pl-12 pr-10 py-3.5 border border-orange-200 rounded-2xl focus:ring-2 focus:ring-orange-400/50 focus:border-orange-400 outline-none transition-all duration-300 bg-white/90 backdrop-blur-sm appearance-none cursor-pointer text-gray-900"
+                  className="pl-12 pr-10 py-3 border border-orange-200 rounded-2xl focus:ring-2 focus:ring-orange-400/50 focus:border-orange-400 outline-none transition-all duration-300 bg-white/90 backdrop-blur-sm appearance-none cursor-pointer text-gray-900"
                 >
                   <option value="All">All Status</option>
                   <option value="Open">Open</option>
@@ -258,7 +258,7 @@ const Dashboard = () => {
               {/* Refresh Button */}
               <button 
                 onClick={fetchTickets}
-                className="flex items-center gap-3 bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700 text-white font-semibold py-3.5 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl whitespace-nowrap"
+                className="flex items-center justify-center gap-2 sm:gap-3 bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700 text-white font-semibold py-3 px-5 sm:py-3.5 sm:px-6 rounded-2xl transition-all duration-300 transform md:hover:scale-105 shadow-lg hover:shadow-xl whitespace-nowrap"
               >
                 <RefreshCw className="w-5 h-5" />
                 Refresh
@@ -269,7 +269,7 @@ const Dashboard = () => {
       </div>
 
       {/* Main Content */}
-      <div className="relative max-w-7xl mx-auto px-6 py-10">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           <div className="bg-white/80 backdrop-blur-sm p-6 rounded-3xl shadow-lg border border-orange-200/50 hover:shadow-xl transition-all duration-300 group">
@@ -328,7 +328,7 @@ const Dashboard = () => {
         </div>
 
         {/* Tickets Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           <Cards 
             tickets={filteredTickets} 
             deletingId={deletingId}
@@ -353,11 +353,11 @@ const Dashboard = () => {
 
       {/* Screenshot Upload Modal */}
       {showScreenshotModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg w-full max-w-2xl relative">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-3 sm:p-4 z-50">
+          <div className="bg-white rounded-lg w-full max-w-2xl relative max-h-[90vh] overflow-y-auto p-4 sm:p-6">
             <button
               onClick={() => setShowScreenshotModal(false)}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+              className="absolute top-3 sm:top-4 right-3 sm:right-4 text-gray-500 hover:text-gray-700"
             >
               ✕
             </button>

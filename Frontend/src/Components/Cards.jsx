@@ -50,7 +50,7 @@ const Cards = ({ tickets, deletingId, onDelete }) => {
       {tickets.map((ticket, index) => (
         <div
           key={ticket._id}
-          className="group bg-white/85 backdrop-blur-sm rounded-3xl shadow-lg hover:shadow-2xl border border-orange-200/50 overflow-hidden transition-all duration-500 transform hover:-translate-y-2 hover:rotate-1"
+          className="group bg-white/90 backdrop-blur-sm rounded-3xl shadow-md md:hover:shadow-2xl border border-orange-200/50 ring-1 ring-orange-100/60 overflow-hidden transition-all duration-500 md:transform md:hover:-translate-y-2 flex flex-col h-full"
           style={{
             animationDelay: `${index * 150}ms`,
             animation: 'slideInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards'
@@ -79,7 +79,7 @@ const Cards = ({ tickets, deletingId, onDelete }) => {
                   <Calendar className="w-4 h-4" />
                   <span className="text-sm">Support Request</span>
                 </div>
-                <div className="text-xs bg-white/20 px-2 py-1 rounded-full">
+                <div className="text-xs bg-white/25 md:bg-white/30 px-2.5 py-1 rounded-full backdrop-blur-sm shadow-sm">
                   {new Date(ticket.createdAt).toLocaleString('en-US', {
                     year: 'numeric',
                     month: 'short',
@@ -91,11 +91,11 @@ const Cards = ({ tickets, deletingId, onDelete }) => {
               </div>
             </div>
           </div>
-
           {/* Card Body */}
-          <div className="p-6 space-y-5">
+          <div className="flex flex-col flex-1 p-6 border-t border-orange-100">
+            <div className="space-y-5">
             {/* Customer Info */}
-            <div className="space-y-4">
+            <div className="space-y-4 md:col-span-2">
               <div className="flex items-center gap-4 p-3 bg-gradient-to-r from-orange-50 to-amber-50 rounded-2xl border border-orange-100">
                 <div className="w-10 h-10 bg-gradient-to-r from-orange-500 to-amber-500 rounded-xl flex items-center justify-center shadow-sm">
                   <User className="w-5 h-5 text-white" />
@@ -128,7 +128,7 @@ const Cards = ({ tickets, deletingId, onDelete }) => {
             </div>
 
             {/* Description */}
-            <div className="bg-gradient-to-r from-gray-50 to-orange-50/50 rounded-2xl p-4 border border-gray-200">
+            <div className="bg-gradient-to-r from-gray-50 to-orange-50/50 rounded-2xl p-4 border border-gray-200 min-h-[92px]">
               <div className="group/details">
                 <div className="flex items-center gap-2">
                   <Eye className="w-4 h-4 text-amber-800" />
@@ -150,7 +150,7 @@ const Cards = ({ tickets, deletingId, onDelete }) => {
                     to={`/tickets/${ticket._id}`}
                     className="group flex items-center justify-between text-orange-600 hover:text-orange-700 transition-colors"
                   >
-                    <p className="text-sm line-clamp-3">
+                    <p className="text-sm line-clamp-3 lg:line-clamp-4">
                       {ticket.description || 'No description provided'}
                     </p>
                     <ArrowRight className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -159,18 +159,20 @@ const Cards = ({ tickets, deletingId, onDelete }) => {
               </div>
             </div>
 
+            </div>
+
             {/* Status Display and Actions */}
-            <div className="flex items-center justify-between pt-3">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mt-4">
               <div className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl text-sm font-bold border shadow-sm ${getStatusColor(ticket.status)}`}>
                 {ticket.status || 'Open'}
               </div>
               <button
                 onClick={() => onDelete(ticket._id)}
                 disabled={deletingId === ticket._id}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-2xl text-sm font-semibold transition-all duration-300 ${
+                className={`w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2.5 rounded-2xl text-sm font-semibold transition-all duration-300 ${
                   deletingId === ticket._id
                     ? 'bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-200'
-                    : 'bg-gradient-to-r from-red-50 to-red-100 text-red-700 hover:from-red-500 hover:to-red-600 hover:text-white border border-red-200 hover:border-red-500 transform hover:scale-105 shadow-sm hover:shadow-lg'
+                    : 'bg-white text-red-600 border border-red-200 hover:bg-red-600 hover:text-white transform hover:scale-105 shadow-sm hover:shadow-lg'
                 }`}
               >
                 <Trash2 className="w-4 h-4" />
